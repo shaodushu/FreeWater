@@ -1,0 +1,19 @@
+{
+  "name": "freewater",
+  "version": "1.0.0",
+  "description": "免费去除水印",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaodushu/FreeWater.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaodushu/FreeWater/issues"
+  },
+  "homepage": "https://github.com/shaodushu/FreeWater#readme"
+}
