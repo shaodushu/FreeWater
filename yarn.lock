@@ -2937,6 +2937,11 @@ charenc@0.0.2:
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
   integrity sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
 
+child_process@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/child_process/-/child_process-1.0.2.tgz#b1f7e7fc73d25e7fd1d455adc94e143830182b5a"
+  integrity sha1-sffn/HPSXn/R1FWtyU4UODAYK1o=
+
 chokidar@3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.3.1.tgz#c84e5b3d18d9a4d77558fef466b1bf16bbeb3450"
@@ -9672,10 +9677,10 @@ taro-css-to-react-native@3.3.3:
     css-mediaquery "^0.1.2"
     postcss-value-parser "^3.3.0"
 
-taro-plugin-sync-in-wsl@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/taro-plugin-sync-in-wsl/-/taro-plugin-sync-in-wsl-1.1.6.tgz#45678a35cbeefca5f304cd29adb828b6830609c3"
-  integrity sha512-4Iv8tu4PS26raKgPk5qfp34a2lkdba1+iPwMeqy5ah/Yw/+u2gQm+FTQBJqKtDjBr9ZT4qNAwqm+xIGRJIMtkw==
+taro-plugin-sync-to-wsl@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/taro-plugin-sync-to-wsl/-/taro-plugin-sync-to-wsl-0.0.1.tgz#38af536ef1297dfad2dbf4eeb0c60d9484d5902c"
+  integrity sha512-RwOt8fottYMucbBzxMXpuHwLGTiLekD5bBEeRRNPpdirdZ+lMcyvUvyy4IAZf5+0mkY2jaFkvzqGU3XSN7oXyg==
   dependencies:
     "@tarojs/service" "^3.1.4"
     shelljs "^0.8.4"

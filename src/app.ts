@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro';
 import { FC } from 'react'
 import sr from 'sr-sdk-wxapp'
 
@@ -47,6 +48,14 @@ sr.init({
   autoTrack: true,
   installFrom: 'Taro@v3'
 })
+
+if (!Taro.cloud) {
+  console.error('请使用 2.2.3 或以上的基础库以使用云能力');
+} else {
+  Taro.cloud.init({
+    traceUser: true
+  })
+}
 
 const App: FC<any> = (props) => {
   return props.children

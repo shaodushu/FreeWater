@@ -14,14 +14,4 @@ module.exports = {
      * }
      */
   },
-  // plugins: [
-  //   [
-  //     "taro-plugin-sync-in-wsl",
-  //     {
-  //       dists: {
-  //         weapp: "/mnt/d/Code/FreeWater"
-  //       }
-  //     },
-  //   ],
-  // ],
 }

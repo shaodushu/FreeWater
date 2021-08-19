@@ -12,11 +12,15 @@ const config = {
   plugins: [
     '@tarojs/plugin-html',
     [
-      "taro-plugin-sync-in-wsl",
+      "taro-plugin-sync-to-wsl",
       {
-        dists: {
-          weapp: "/mnt/d/Code/FreeWater"
-        }
+        weapp: [{
+          sourcePath: "dist/",
+          outputPath: "/mnt/d/Code/FreeWater"
+        }, {
+          sourcePath: "cloud",
+          outputPath: "/mnt/d/Code/FreeWater"
+        }]
       },
     ],
   ],
