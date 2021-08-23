@@ -28,7 +28,7 @@ sr.init({
   /**
    * 开启打印调试信息， 默认 false
    */
-  debug: true,
+  debug: false,
 
   /**
    * 建议开启-开启自动代理 Page， 默认 false

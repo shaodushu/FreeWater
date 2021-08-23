@@ -12,10 +12,11 @@ function Index() {
       console.log(param)
       return Taro.cloud.callFunction({
         name: param,
-        // data: {
-        //   $url: '/dy',
-        //   test: 1
-        // }
+        data: {
+          $url: 'dy',
+          x: 1,
+          y: 2,
+        }
       })
     },
     // formatResult: ({ data }) => {
