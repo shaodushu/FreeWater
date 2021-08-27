@@ -11,22 +11,19 @@ const config = {
   outputRoot: 'dist',
   plugins: [
     '@tarojs/plugin-html',
-    [
-      "taro-plugin-sync-to-wsl",
-      {
-        weapp: [{
-          sourcePath: "dist/",
-          outputPath: "/mnt/d/Code/FreeWater"
-        }, {
-          sourcePath: "cloud",
-          outputPath: "/mnt/d/Code/FreeWater"
-        }]
-      },
-    ],
+    '@tarojs/plugin-react-devtools'
   ],
   defineConstants: {},
   copy: {
-    patterns: [],
+    patterns: [{
+        from: 'cloud/',
+        to: '/mnt/d/Code/FreeWater/cloud',
+      }, // 指定需要 copy 的目录
+      {
+        from: 'dist/',
+        to: '/mnt/d/Code/FreeWater'
+      } // 指定需要 copy 的文件
+    ],
     options: {}
   },
   framework: 'react',

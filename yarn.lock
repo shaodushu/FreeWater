@@ -1374,7 +1374,7 @@
     lodash-es "4.17.15"
     reflect-metadata "^0.1.13"
 
-"@tarojs/service@3.3.3", "@tarojs/service@^3.1.4":
+"@tarojs/service@3.3.3":
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/@tarojs/service/-/service-3.3.3.tgz#ad54d1cad76865376e42eea6faea62fb2cacb09c"
   integrity sha512-bpSjFmT9R+fZSNmNw5371T2kGtjFUgA0YHoqIb3Toj6HLhVRtdZX7ibfwbT1tqkLI+ve1jhagnpZxxxcLWxJEQ==
@@ -9676,14 +9676,6 @@ taro-css-to-react-native@3.3.3:
     css-color-keywords "^1.0.0"
     css-mediaquery "^0.1.2"
     postcss-value-parser "^3.3.0"
-
-taro-plugin-sync-to-wsl@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/taro-plugin-sync-to-wsl/-/taro-plugin-sync-to-wsl-0.0.1.tgz#38af536ef1297dfad2dbf4eeb0c60d9484d5902c"
-  integrity sha512-RwOt8fottYMucbBzxMXpuHwLGTiLekD5bBEeRRNPpdirdZ+lMcyvUvyy4IAZf5+0mkY2jaFkvzqGU3XSN7oXyg==
-  dependencies:
-    "@tarojs/service" "^3.1.4"
-    shelljs "^0.8.4"
 
 terser-webpack-plugin@^1.4.3:
   version "1.4.5"

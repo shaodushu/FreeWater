@@ -55,7 +55,6 @@
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "stylelint": "9.3.0",
-    "taro-plugin-sync-to-wsl": "^0.0.1",
     "typescript": "^4.1.0"
   }
 }
