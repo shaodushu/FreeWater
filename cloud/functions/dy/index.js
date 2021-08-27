@@ -30,11 +30,11 @@ exports.main = async (event, context) => {
       } = ctx._req.event
       // console.log(ctx)
       // const result = await api.search(title)
-    //   return ctx.body = {
-    //     code: 200,
-    //     msg: `发现相关小说`,
-    //     data: tools.booksList(result.text)
-    //   }
+      //   return ctx.body = {
+      //     code: 200,
+      //     msg: `发现相关小说`,
+      //     data: tools.booksList(result.text)
+      //   }
 
       try {
         const {
@@ -42,7 +42,8 @@ exports.main = async (event, context) => {
           share_title
         } = await runDouyin('https://v.douyin.com/JdngHhh/');
         ctx._res.attachment(`${share_title}(无水印).mp4`);
-        videoStream.pipe(ctx._res);
+        // videoStream.pipe(ctx._res);
+        console.log(videoStream, share_title)
       } catch (e) {
         console.log(e);
         ctx._res.send('错误: ' + e);

@@ -11,7 +11,6 @@ const config = {
   outputRoot: 'dist',
   plugins: [
     '@tarojs/plugin-html',
-    '@tarojs/plugin-react-devtools'
   ],
   defineConstants: {},
   copy: {
