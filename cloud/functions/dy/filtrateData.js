@@ -3,7 +3,8 @@ const fs = require('fs');
 const getAllUrl = require('./getAllUrl.js');
 const {
   isSaveJsonData,
-  ajaxPath
+  ajaxPath,
+  coverPath
 } = require('./config');
 
 // 获取对象深层次属性，兼容有[]的情况
@@ -38,7 +39,8 @@ async function getFiltrateData(inputUrl) {
     aweme_list.reverse().forEach((item, index) => {
       filtrateData.push({
         title: `${index+1}_${item.desc}`,
-        url: getJsonValue(item, ajaxPath)
+        url: getJsonValue(item, ajaxPath),
+        cover: getJsonValue(item, coverPath)
       })
     })
   } catch (error) {

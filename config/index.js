@@ -10,7 +10,9 @@ const config = {
   sourceRoot: 'src',
   outputRoot: 'dist',
   plugins: [
-    '@tarojs/plugin-html',
+    ['@tarojs/plugin-html', {
+      pxtransformBlackList: [/adm-/, /demo-/, /^body/]
+    }]
   ],
   defineConstants: {},
   copy: {

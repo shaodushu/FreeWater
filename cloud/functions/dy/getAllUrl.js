@@ -12,8 +12,15 @@ const {
 async function getAllUrl(inputUrl) {
 
   const browser = await puppeteer.launch({
-    headless: !isShowChrome
+    // executablePath: 'D:\Code\FreeWater\cloud\functions\dy\node_modules\puppeteer\.local-chromium\win64-901912\chrome-win\chrome.exe', 
+    // executablePath: './node_modules/puppeteer/.local-chromium/win64-809590/chrome-win/chrome.exe',
+    // executablePath:'./node_modules/puppeteer/.local-chromium/linux-901912/chrome-linux/chrome',
+    // ignoreDefaultArgs: ['--disable-extensions'],
+    // executablePath:'./node_modules/puppeteer/.local-chromium/linux-901912/chrome-linux/chrome',
+    headless: !isShowChrome,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
+  console.log(browser)
   const page = await browser.newPage();
   await page.emulate(puppeteer.devices['iPhone 6']);
   await page.goto(inputUrl);
@@ -91,5 +98,5 @@ async function getAllUrl(inputUrl) {
 
 }
 
-// getAllUrl()
+getAllUrl('https://v.douyin.com/dL9BfJK/')
 module.exports = getAllUrl

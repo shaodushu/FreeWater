@@ -5,7 +5,9 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
+    "express": "^4.17.1",
     "puppeteer": "^10.2.0",
+    "shelljs": "^0.8.4",
     "tcb-router": "^1.1.2",
     "wx-server-sdk": "^2.5.3"
   }
