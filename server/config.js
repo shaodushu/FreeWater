@@ -1,6 +1,7 @@
 module.exports = {
   isShowChrome: false, //是否显示chrome浏览器
-  ajaxKey: 'v2/aweme/post', //接口的关键字，防止对所有接口都获取数据
+  // ajaxKey: 'v2/aweme/post', //接口的关键字，防止对所有接口都获取数据
+  ajaxKey: 'v2/aweme/like', //接口的关键字，防止对所有接口都获取数据
   ajaxPath: 'video.play_addr.url_list[0]', //视频在接口里的路径
   coverPath: 'video.cover.url_list[0]', //视频封面在接口里的路径
   // inputUrl: 'https://v.douyin.com/qKYSAt/'

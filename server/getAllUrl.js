@@ -17,13 +17,20 @@ async function getAllUrl(inputUrl) {
     // executablePath:'./node_modules/puppeteer/.local-chromium/linux-901912/chrome-linux/chrome',
     // ignoreDefaultArgs: ['--disable-extensions'],
     // executablePath:'./node_modules/puppeteer/.local-chromium/linux-901912/chrome-linux/chrome',
-    headless: !isShowChrome,
+    // headless: !isShowChrome,
+    headless: false,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   console.log(browser)
   const page = await browser.newPage();
   await page.emulate(puppeteer.devices['iPhone 6']);
-  await page.goto(inputUrl);
+  await page.goto(inputUrl, {
+    waitUntil: 'networkidle0'
+  });
+
+  const likeTab = await page.waitForSelector('.like-tab')
+  likeTab.click()
+
   console.log('开始获取接口中的视频')
   let aweme_list = []
   // 这个事件监听要放在下面那些await前面
