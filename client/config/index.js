@@ -12,19 +12,18 @@ const config = {
   plugins: [
     ['@tarojs/plugin-html', {
       pxtransformBlackList: [/adm-/, /demo-/, /^body/]
+    }],
+    ['taro-plugin-sync-in-wsl', {
+      weapp: [{
+          sourcePath: 'dist/',
+          outputPath: '/mnt/d/Code/FreeWater',
+        },
+      ],
     }]
   ],
   defineConstants: {},
   copy: {
-    patterns: [{
-        from: 'cloud/',
-        to: '/mnt/d/Code/FreeWater/cloud',
-      }, // 指定需要 copy 的目录
-      {
-        from: 'dist/',
-        to: '/mnt/d/Code/FreeWater'
-      } // 指定需要 copy 的文件
-    ],
+    patterns: [],
     options: {}
   },
   framework: 'react',

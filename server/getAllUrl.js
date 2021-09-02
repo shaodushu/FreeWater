@@ -1,35 +1,36 @@
 // 获取接口中的所有视频链接
 const puppeteer = require('puppeteer');
-// const devices = require('puppeteer/DeviceDescriptors')
-// const iPhone = devices['iPhone 6']
 const fs = require('fs');
 const {
   ajaxKey,
   isShowChrome,
-  isSaveJsonData
+  isSaveJsonData,
+  devices
 } = require('./config')
 
-async function getAllUrl(inputUrl) {
+/**
+ * 
+ * @param {*} inputUrl 
+ * @param {*} type post|like
+ * @returns 
+ */
+async function getAllUrl(inputUrl, type) {
 
   const browser = await puppeteer.launch({
-    // executablePath: 'D:\Code\FreeWater\cloud\functions\dy\node_modules\puppeteer\.local-chromium\win64-901912\chrome-win\chrome.exe', 
-    // executablePath: './node_modules/puppeteer/.local-chromium/win64-809590/chrome-win/chrome.exe',
-    // executablePath:'./node_modules/puppeteer/.local-chromium/linux-901912/chrome-linux/chrome',
-    // ignoreDefaultArgs: ['--disable-extensions'],
-    // executablePath:'./node_modules/puppeteer/.local-chromium/linux-901912/chrome-linux/chrome',
-    // headless: !isShowChrome,
-    headless: false,
+    headless: !isShowChrome,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   console.log(browser)
   const page = await browser.newPage();
-  await page.emulate(puppeteer.devices['iPhone 6']);
+  await page.emulate(puppeteer.devices[devices]);
   await page.goto(inputUrl, {
     waitUntil: 'networkidle0'
   });
 
-  const likeTab = await page.waitForSelector('.like-tab')
-  likeTab.click()
+  if (type === 'like') {
+    const likeTab = await page.waitForSelector('.like-tab')
+    likeTab.click()
+  }
 
   console.log('开始获取接口中的视频')
   let aweme_list = []
@@ -39,7 +40,7 @@ async function getAllUrl(inputUrl) {
     if (request.resourceType() == "xhr") {
 
       // 匹配所需数据的请求地址
-      if (request.url().indexOf(ajaxKey) != -1) {
+      if (request.url().indexOf(ajaxKey + type) != -1) {
         (async () => {
           try {
             // 获取数据并转为json格式
@@ -105,5 +106,5 @@ async function getAllUrl(inputUrl) {
 
 }
 
-getAllUrl('https://v.douyin.com/dL9BfJK/')
+// getAllUrl('https://v.douyin.com/dL9BfJK/')
 module.exports = getAllUrl

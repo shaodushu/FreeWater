@@ -30,9 +30,9 @@ function getJsonValue(obj, node) {
   return getJsonValue(newObj, node.substring(item.length + 1));
 }
 
-async function getFiltrateData(inputUrl) {
+async function getFiltrateData(inputUrl, type) {
   // 这里需要过滤标题中不能作为文件名保存的关键字
-  let aweme_list = await getAllUrl(inputUrl)
+  let aweme_list = await getAllUrl(inputUrl, type)
   console.log("开始整理数据")
   let filtrateData = []
   try {
