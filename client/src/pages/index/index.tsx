@@ -1,35 +1,19 @@
 import Taro from '@tarojs/taro';
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useRequest } from 'ahooks'
 import styles from './index.module.less'
-import { useState } from 'react';
-import { Image, Space } from 'antd-mobile'
-// import styles1 from './index.less'
-
-const demoSrc =
-  'https://images.unsplash.com/photo-1567945716310-4745a6b7844b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60'
+import { Grid, Image, Space } from 'antd-mobile'
 
 
 function Index() {
-  const [value, setValue] = useState('')
-  const { data, loading, error } = useRequest("http://192.168.1.79:3000/list", {
+  const { data, loading, error } = useRequest("http://192.168.1.79:3000/list?url=https://v.douyin.com/dL9BfJK/&type=like", {
     requestMethod: (param: any) => {
       console.log(param)
       return Taro.request({
         url: param
       })
     },
-    formatResult: (v) => v.data.data
-    // requestMethod: (param: any) => {
-    //   console.log(param)
-    //   return Taro.cloud.callFunction({
-    //     name: param,
-    //     data: {
-    //       $url: 'list',
-    //       url: 'https://v.douyin.com/dL9BfJK/',
-    //     }
-    //   })
-    // },
+    formatResult: (v) => v.data
   })
   console.log(data, loading, error)
   if (error) {
@@ -45,18 +29,19 @@ function Index() {
     <Image src={demoSrc} width={100} height={100} fit='cover' />
     <Image src={demoSrc} width={100} height={100} fit='scale-down' />
     <Image src={demoSrc} width={100} height={100} fit='none' /> */}
-    {data.map(item => <>
-      <h3>{item.title}</h3>
-      <Image src={item.cover} width={100} height={100} fit='fill' />
-    </>)}
-    <Space >
 
-      {/* <Image src={demoSrc} width={100} height={100} fit='fill' />
-      <Image src={demoSrc} width={100} height={100} fit='contain' />
-      <Image src={demoSrc} width={100} height={100} fit='cover' />
-      <Image src={demoSrc} width={100} height={100} fit='scale-down' />
-      <Image src={demoSrc} width={100} height={100} fit='none' /> */}
-    </Space>
+    <Grid columns={2} gap={8}>
+      {data.map(item => <Grid.Item key={item.title}>
+        {/* <h3>{item.title}</h3> */}
+        <Image width={100} height={100} src={item.cover} />
+      </Grid.Item>)}
+    </Grid>
+    {/* <Space className={styles.img_box}>
+      {data.map(item => <div className={styles.img}>
+        <h3>{item.title}</h3>
+        <Image className={styles.img} src={item.cover} />
+      </div>)}
+    </Space> */}
     {/* <input type="text" placeholder="短链" onChange={e => setValue(e.currentTarget.value)} />
     <Text className={styles.txt}>Hello world!{value}</Text>
     <div className={styles.test}>
