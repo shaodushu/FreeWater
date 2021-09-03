@@ -9,6 +9,7 @@ const {
 } = config;
 
 // 获取对象深层次属性，兼容有[]的情况
+// deno-lint-ignore no-explicit-any
 function getJsonValue(obj: { [x: string]: any }, node: string): any {
   if (!obj) {
     return null;
@@ -16,11 +17,11 @@ function getJsonValue(obj: { [x: string]: any }, node: string): any {
   if (!node) {
     return null;
   }
-  let nodes = node.split(".");
-  let item = nodes[0];
+  const nodes = node.split(".");
+  const item = nodes[0];
   let newObj = obj[item];
   if (nodes[0].indexOf("[") > -1) {
-    let itemArr = item.split("[");
+    const itemArr = item.split("[");
     newObj = obj[itemArr[0]];
     newObj = newObj[itemArr[1].slice(0, -1)];
   }
@@ -30,13 +31,16 @@ function getJsonValue(obj: { [x: string]: any }, node: string): any {
   return getJsonValue(newObj, node.substring(item.length + 1));
 }
 
-export default async function getFiltrateData(inputUrl: any, type: any) {
+export default async function getFiltrateData(
+  inputUrl: string,
+  type: API.DataType,
+) {
   // 这里需要过滤标题中不能作为文件名保存的关键字
-  let aweme_list = await getAllUrl(inputUrl, type);
+  const awemeList = await getAllUrl(inputUrl, type);
   console.log("开始整理数据");
-  let filtrateData: any[] = [];
+  const filtrateData: API.Aweme[] = [];
   try {
-    aweme_list.reverse().forEach((item: { desc: any }, index: number) => {
+    awemeList.reverse().forEach((item: any, index: number) => {
       filtrateData.push({
         title: `${index + 1}_${item.desc}`,
         url: getJsonValue(item, ajaxPath),
@@ -50,8 +54,10 @@ export default async function getFiltrateData(inputUrl: any, type: any) {
 
   console.log("整理数据完成，视频个数为：", filtrateData.length);
   if (isSaveJsonData) {
-    //@ts-ignore
-    Deno.writeFileSync("filtrateData.json", JSON.stringify(filtrateData));
+    const encoder = new TextEncoder();
+    const data = encoder.encode(JSON.stringify(filtrateData));
+
+    Deno.writeFileSync("filtrateData.json", data);
   }
   return filtrateData;
 }

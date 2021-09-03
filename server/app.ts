@@ -1,8 +1,10 @@
 import {
   Application,
+  isHttpError,
   RouteParams,
   Router,
   RouterContext,
+  Status,
 } from "https://deno.land/x/oak@v9.0.0/mod.ts";
 import getFiltrateData from "./filtrateData.ts";
 
@@ -23,6 +25,28 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 console.log(`Listening on port ${PORT}...`);
 
+app.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    if (isHttpError(err)) {
+      switch (err.status) {
+        case Status.NotFound:
+          // handle NotFound
+          break;
+        case Status.InternalServerError:
+          console.log(err);
+          break;
+        default:
+          // handle other statuses
+      }
+    } else {
+      // rethrow if you can't handle the error
+      throw err;
+    }
+  }
+});
+
 /** 获取帖子 */
 export const getPost = async (
   ctx: RouterContext<RouteParams, Record<string, any>>,
@@ -33,20 +57,16 @@ export const getPost = async (
     request,
   } = ctx;
 
-  try {
-    const searchUrl = request.url.searchParams.get("url");
-    const filtrateData = await getFiltrateData(searchUrl, "post");
-
-    if (filtrateData.length) {
-      response.status = 200;
-      response.body = filtrateData;
-      return;
-    }
-  } catch (error) {
-    console.log(error);
-    response.status = 500;
-    response.body = error;
+  const searchUrl = request.url.searchParams.get("url");
+  if (!searchUrl) {
+    response.status = 400;
+    response.body = { msg: `Cannot find url ${searchUrl}` };
+    return;
   }
+  const filtrateData = await getFiltrateData(searchUrl, "post");
+
+  response.status = 200;
+  response.body = filtrateData;
 };
 
 /** 获取喜欢 */
@@ -58,16 +78,18 @@ export const getLike = async (
     response,
     request,
   } = ctx;
-  const searchUrl = request.url.searchParams.get("url");
-  const filtrateData = await getFiltrateData(searchUrl, "like");
 
-  if (filtrateData.length) {
-    response.status = 200;
-    response.body = filtrateData;
+  const searchUrl = request.url.searchParams.get("url");
+  if (!searchUrl) {
+    response.status = 400;
+    response.body = { msg: `Cannot find url ${searchUrl}` };
     return;
   }
-  response.status = 400;
-  response.body = { msg: `Cannot find url ${searchUrl}` };
+
+  const filtrateData = await getFiltrateData(searchUrl, "like");
+
+  response.status = 200;
+  response.body = filtrateData;
 };
 
 router

@@ -7,7 +7,8 @@ const getUrl = async (item: any) => {
   await page.emulate(puppeteer.devices["iPhone 6"]); //模拟iphone6打开页面
   await page.goto(item.url); //进入指定网页
   const result = await page.evaluate((item) => {
-    let url = document.querySelector("source").src;
+    // @ts-ignore document
+    const url = document.querySelector("source").src;
     return {
       title: item.title,
       url,
