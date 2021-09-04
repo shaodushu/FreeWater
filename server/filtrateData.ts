@@ -1,3 +1,4 @@
+/// <reference types="./types.d.ts" />
 // 整理数据,筛选出所需要的数据
 import getAllUrl from "./getAllUrl.ts";
 import config from "./config.ts";

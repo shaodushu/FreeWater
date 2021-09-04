@@ -1,3 +1,5 @@
+/// <reference types="./types.d.ts" />
+
 // 获取接口中的所有视频链接
 import puppeteer from "https://deno.land/x/puppeteer@9.0.1/mod.ts";
 import config from "./config.ts";
