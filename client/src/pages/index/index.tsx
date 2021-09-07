@@ -2,11 +2,25 @@ import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components'
 import { useRequest } from 'ahooks'
 import styles from './index.module.less'
-import { Grid, Image, Space } from 'antd-mobile'
+import { Image, Space } from 'antd-mobile'
+import Button from 'antd-mobile/es/components/button'
+import { spawn } from 'child_process';
 
+
+const Grid: React.FC = (props) => {
+  const style = Object.assign({}, {
+    '--vertical-gap': '8px',
+    '--horizontal-gap': '8px',
+    '--columns': 3
+
+  })
+  return <div className={styles.grid} style={style}>
+    {props.children}
+  </div>
+}
 
 function Index() {
-  const { data, loading, error } = useRequest("http://192.168.1.79:3000/list?url=https://v.douyin.com/dL9BfJK/&type=like", {
+  const { data, loading, error } = useRequest("http://localhost:3000/post?url=https://v.douyin.com/dL9BfJK/&type=like", {
     requestMethod: (param: any) => {
       console.log(param)
       return Taro.request({
@@ -22,20 +36,27 @@ function Index() {
   if (loading) {
     return <div>loading...</div>
   }
-
+  // console.log(<Grid columns={3} gap={8} />)
   return <View className={styles.test}>
     {/* <Image src={demoSrc} width={100} height={100} fit='fill' /> */}
     {/* <Image src={demoSrc} width={100} height={100} fit='contain' />
     <Image src={demoSrc} width={100} height={100} fit='cover' />
     <Image src={demoSrc} width={100} height={100} fit='scale-down' />
     <Image src={demoSrc} width={100} height={100} fit='none' /> */}
-
-    <Grid columns={2} gap={8}>
+    <Grid  >
+      {data.map(item => <div key={item.title} className={styles['grid-item']}>
+        <Image width={100} height={100} src={item.cover} />
+      </div>)}
+    </Grid>
+    {/* <Grid columns={3} gap={8}>
       {data.map(item => <Grid.Item key={item.title}>
-        {/* <h3>{item.title}</h3> */}
         <Image width={100} height={100} src={item.cover} />
       </Grid.Item>)}
-    </Grid>
+    </Grid> */}
+
+    <Button block color='primary' size='large'>
+      Block Button
+    </Button>
     {/* <Space className={styles.img_box}>
       {data.map(item => <div className={styles.img}>
         <h3>{item.title}</h3>

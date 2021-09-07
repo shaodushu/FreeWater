@@ -9,6 +9,5 @@
     "postcss": false,
     "minified": false
   },
-  "compileType": "miniprogram",
-  "cloudfunctionRoot": "cloud/functions/"
+  "compileType": "miniprogram"
 }

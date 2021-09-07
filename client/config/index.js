@@ -11,14 +11,13 @@ const config = {
   outputRoot: 'dist',
   plugins: [
     ['@tarojs/plugin-html', {
-      pxtransformBlackList: [/adm-/, /demo-/, /^body/]
+      pxtransformBlackList: [/adm-/, /^body/]
     }],
     ['taro-plugin-sync-in-wsl', {
       weapp: [{
-          sourcePath: 'dist/',
-          outputPath: '/mnt/d/Code/FreeWater',
-        },
-      ],
+        sourcePath: 'dist/',
+        outputPath: '/mnt/d/Code/FreeWater',
+      }],
     }]
   ],
   defineConstants: {},
@@ -30,7 +29,7 @@ const config = {
   mini: {
     postcss: {
       pxtransform: {
-        enable: true,
+        enable: false,
         config: {
 
         }
