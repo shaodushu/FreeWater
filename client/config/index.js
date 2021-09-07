@@ -11,7 +11,7 @@ const config = {
   outputRoot: 'dist',
   plugins: [
     ['@tarojs/plugin-html', {
-      pxtransformBlackList: [/adm-/, /^body/]
+      // pxtransformBlackList: [/taroify-/, /^body/]
     }],
     ['taro-plugin-sync-in-wsl', {
       weapp: [{

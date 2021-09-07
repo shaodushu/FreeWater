@@ -8,10 +8,14 @@ module.exports = {
     }]
   ],
   plugins: [
-    ['import', {
-      libraryName: "antd-mobile",
-      libraryDirectory: "es/components",
-      style: false
-    }]
-  ]
+    [
+      "import",
+      {
+        "libraryName": "@taroify/core",
+        "libraryDirectory": "",
+        "style": (name) => `${name}/index.scss`,
+      },
+      "@taroify/core",
+    ],
+  ],
 }
