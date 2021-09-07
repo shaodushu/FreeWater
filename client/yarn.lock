@@ -1253,6 +1253,25 @@
   resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.4.0.tgz#17b45629c8986e35dcbce3f7dab7d64beede83f2"
   integrity sha512-gU6+Yyd6O0KrCSS/O6j8KKqmRo+/Dcs2fI0+APCpbAWK+nqhwDISpdnSEfGDCLMoAC08XOZCycBRk2K1VGnEcg==
 
+"@taroify/core@^0.0.12-alpha.4":
+  version "0.0.12-alpha.4"
+  resolved "https://registry.yarnpkg.com/@taroify/core/-/core-0.0.12-alpha.4.tgz#fb97a4343a055689b1256b1501314f9dbcd52425"
+  integrity sha512-wgfe+anULvzDEisdCvkWu5X9nRwLLU91vyXbQDLYCrhCW2z9Ui2tjbPWmsohtE504/9f+mQUolk6ZDbo+QeNiQ==
+  dependencies:
+    "@taroify/icons" "^0.0.12-alpha.4"
+    classnames "^2.2.6"
+    lodash "^4.17.21"
+    raf "^3.4.1"
+    react-is "^17.0.2"
+    react-transition-group "^4.4.1"
+
+"@taroify/icons@^0.0.12-alpha.4":
+  version "0.0.12-alpha.4"
+  resolved "https://registry.yarnpkg.com/@taroify/icons/-/icons-0.0.12-alpha.4.tgz#3b3ec8da4c50e5521d8f9ce2f179c41e780c9217"
+  integrity sha512-dDpzsn77jSXaNaZWTX/ovNHcW3VyM63/hHuEPk3hyzKHQaewVX+hRVAc9afXGtKMUfhskjAfSj4nzX+kfOualg==
+  dependencies:
+    classnames "^2.2.6"
+
 "@tarojs/api@3.3.7":
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/@tarojs/api/-/api-3.3.7.tgz#a8c772cc032155c9fbfe8900a42d587a1aa72d68"
@@ -8406,6 +8425,11 @@ react-is@^16.12.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-is@^17.0.2:
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
+  integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
 react-reconciler@0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.26.1.tgz#860952dd359fd870f94895c254271e3a9de3b2d6"
@@ -8425,7 +8449,7 @@ react-refresh@^0.4.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.4.3.tgz#966f1750c191672e76e16c2efa569150cc73ab53"
   integrity sha512-Hwln1VNuGl/6bVwnd0Xdn1e84gT/8T9aYNL+HAKDArLCS7LWjwr7StE30IEYbIkx0Vi3vs+coQxe+SQDbGbbpA==
 
-react-transition-group@^4.4.2:
+react-transition-group@^4.4.1, react-transition-group@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
   integrity sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg==
