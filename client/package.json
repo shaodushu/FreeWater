@@ -35,7 +35,6 @@
 		"@tarojs/runtime": "3.3.7",
 		"@tarojs/taro": "3.3.7",
 		"ahooks": "^2.10.9",
-		"child_process": "^1.0.2",
 		"react": "^17.0.0",
 		"react-dom": "^17.0.0",
 		"shelljs": "^0.8.4",
