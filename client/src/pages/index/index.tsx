@@ -2,27 +2,25 @@ import Taro from '@tarojs/taro';
 import { Video, View } from '@tarojs/components'
 import { useRequest } from 'ahooks'
 import styles from './index.module.less'
-import { Image, Input, Toast } from 'antd-mobile'
-import Button from 'antd-mobile/es/components/button'
-import { spawn } from 'child_process';
-import React, { useEffect, useState } from 'react';
+import { Search, Image, Grid, Button } from "@taroify/core"
+import { useEffect, useState } from 'react';
 
 function httpString(s) {
   const reg = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
   return s.match(reg)
 }
 
-const Grid: React.FC = (props) => {
-  const style = Object.assign({}, {
-    '--vertical-gap': '8px',
-    '--horizontal-gap': '8px',
-    '--columns': 3
+// const Grid: React.FC = (props) => {
+//   const style = Object.assign({}, {
+//     '--vertical-gap': '8px',
+//     '--horizontal-gap': '8px',
+//     '--columns': 3
 
-  })
-  return <div className={styles.grid} style={style}>
-    {props.children}
-  </div>
-}
+//   })
+//   return <div className={styles.grid} style={style}>
+//     {props.children}
+//   </div>
+// }
 
 function Index() {
   const [value, setValue] = useState('')
@@ -61,8 +59,26 @@ function Index() {
     <Image src={demoSrc} width={100} height={100} fit='cover' />
     <Image src={demoSrc} width={100} height={100} fit='scale-down' />
     <Image src={demoSrc} width={100} height={100} fit='none' /> */}
-    <Input value={value} placeholder="短链" onChange={v => setValue(v)} />
-    <Button loading={loading} block color='primary' size='large' onClick={() => run()}>提取</Button>
+    {/* <Field align="center" placeholder="短链">
+      <Field.Button>
+        <Button size="small" color="primary">
+          提取
+        </Button>
+      </Field.Button>
+    </Field> */}
+    <Search
+      value={value}
+      // label="地址"
+      placeholder="请输入搜索关键词"
+      action={
+        <Button loading={loading} size="small" color="primary">
+          提取
+        </Button>
+      }
+      onChange={(e) => setValue(e.detail.value)}
+    />
+    {/* <Input value={value} placeholder="短链" onChange={v => setValue(v)} /> */}
+    <Button block color='primary' size='large' onClick={() => run()}>提取</Button>
     {data.length > 0 && <>
       <Video
         src={data[0]}
@@ -81,7 +97,7 @@ function Index() {
             console.log(res)
             // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
             if (res.statusCode === 200) {
-              Toast.show('下载成功')
+              // Toast.show('下载成功')
               // Taro.paly({
               //   filePath: res.tempFilePath
               // })
@@ -125,11 +141,11 @@ function Index() {
       loop={false}
       muted={false}
     /> */}
-    {/* <Grid  >
+    <Grid >
       {data.map(item => <div key={item.title} className={styles['grid-item']}>
-        <Image width={100} height={100} src={item.cover} />
+        <Image width="100" height="100" src={item.cover} />
       </div>)}
-    </Grid> */}
+    </Grid>
     {/* <Grid columns={3} gap={8}>
       {data.map(item => <Grid.Item key={item.title}>
         <Image width={100} height={100} src={item.cover} />

@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro';
 import { FC } from 'react'
 import sr from 'sr-sdk-wxapp'
-import 'antd-mobile/es/global';
+// import '@taroify/core/index.css'
 
 import './app.less'
 
