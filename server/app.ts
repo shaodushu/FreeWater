@@ -13,7 +13,7 @@ import getVideoUrl from "./getVideoUrl.ts";
 const env = Deno.env.toObject();
 const PORT = env.PORT || 3000;
 // const HOST = env.HOST || "127.0.0.1";
-const HOST = env.HOST || "172.23.200.86";
+const HOST = env.HOST || "172.21.73.140";
 
 // 构建一个 oak 应用
 const router = new Router();

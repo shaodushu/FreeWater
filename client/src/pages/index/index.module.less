@@ -1,30 +1,13 @@
-.test {
+.index {
   width: 90%;
   margin: 10px auto;
-}
 
-.img_box {
-  flex-wrap: wrap;
-}
-
-.img {
-  width: 358px;
-  height: 358px;
-}
-
-.grid {
-  display: grid;
-  grid-gap: 10px;
-  -webkit-column-gap: var(--horizontal-gap);
-  -moz-column-gap: var(--horizontal-gap);
-  column-gap: var(--horizontal-gap);
-  row-gap: var(--vertical-gap);
-  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-  -webkit-align-items: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-}
-
-.grid-item {
-  grid-column-end: span var(--item-span);
+  :global {
+    .taroify-button--medium {
+      height: 68px;
+      line-height: 68px;
+      display: flex;
+      align-items: center;
+    }
+  }
 }

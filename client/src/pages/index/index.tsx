@@ -4,27 +4,11 @@ import { useRequest } from 'ahooks'
 import styles from './index.module.less'
 import { Search, Image, Grid, Button } from "@taroify/core"
 import { useEffect, useState } from 'react';
-
-function httpString(s) {
-  const reg = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
-  return s.match(reg)
-}
-
-// const Grid: React.FC = (props) => {
-//   const style = Object.assign({}, {
-//     '--vertical-gap': '8px',
-//     '--horizontal-gap': '8px',
-//     '--columns': 3
-
-//   })
-//   return <div className={styles.grid} style={style}>
-//     {props.children}
-//   </div>
-// }
+import { httpString } from '@/utils/index';
 
 function Index() {
   const [value, setValue] = useState('')
-  const { run, data = [], loading, error } = useRequest(`http://192.168.1.79:3000/video?url=${value}`, {
+  const { run, data = [], loading, error } = useRequest(`http://192.168.2.100:3000/video?url=${value}`, {
     manual: true,
     requestMethod: (param: any) => {
       console.log(param)
@@ -52,33 +36,16 @@ function Index() {
   // if (loading) {
   //   return <div>loading...</div>
   // }
-  // console.log(<Grid columns={3} gap={8} />)
-  return <View className={styles.test}>
-    {/* <Image src={demoSrc} width={100} height={100} fit='fill' /> */}
-    {/* <Image src={demoSrc} width={100} height={100} fit='contain' />
-    <Image src={demoSrc} width={100} height={100} fit='cover' />
-    <Image src={demoSrc} width={100} height={100} fit='scale-down' />
-    <Image src={demoSrc} width={100} height={100} fit='none' /> */}
-    {/* <Field align="center" placeholder="短链">
-      <Field.Button>
-        <Button size="small" color="primary">
-          提取
-        </Button>
-      </Field.Button>
-    </Field> */}
+
+  return <View className={styles.index}>
     <Search
       value={value}
-      // label="地址"
-      placeholder="请输入搜索关键词"
+      placeholder="请输入提取短链"
       action={
-        <Button loading={loading} size="small" color="primary">
-          提取
-        </Button>
+        <Button loading={loading} shape="round" color="primary" onClick={() => run()}>提取</Button>
       }
       onChange={(e) => setValue(e.detail.value)}
     />
-    {/* <Input value={value} placeholder="短链" onChange={v => setValue(v)} /> */}
-    <Button block color='primary' size='large' onClick={() => run()}>提取</Button>
     {data.length > 0 && <>
       <Video
         src={data[0]}
@@ -141,29 +108,11 @@ function Index() {
       loop={false}
       muted={false}
     /> */}
-    <Grid >
+    {/* <Grid >
       {data.map(item => <div key={item.title} className={styles['grid-item']}>
         <Image width="100" height="100" src={item.cover} />
       </div>)}
-    </Grid>
-    {/* <Grid columns={3} gap={8}>
-      {data.map(item => <Grid.Item key={item.title}>
-        <Image width={100} height={100} src={item.cover} />
-      </Grid.Item>)}
     </Grid> */}
-
-
-    {/* <Space className={styles.img_box}>
-      {data.map(item => <div className={styles.img}>
-        <h3>{item.title}</h3>
-        <Image className={styles.img} src={item.cover} />
-      </div>)}
-    </Space> */}
-    {/* <input type="text" placeholder="短链" onChange={e => setValue(e.currentTarget.value)} />
-    <Text className={styles.txt}>Hello world!{value}</Text>
-    <div className={styles.test}>
-      <span className={styles.txt}>{value}你好 Html dev:weapp! 加载</span>
-    </div> */}
   </View>
 }
 

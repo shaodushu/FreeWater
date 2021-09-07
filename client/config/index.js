@@ -1,3 +1,5 @@
+import path from 'path'
+
 const config = {
   projectName: 'client',
   date: '2021-8-19',
@@ -6,6 +8,12 @@ const config = {
     640: 2.34 / 2,
     750: 1,
     828: 1.81 / 2
+  },
+  alias: {
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/utils': path.resolve(__dirname, '..', 'src/utils'),
+    '@/package': path.resolve(__dirname, '..', 'package.json'),
+    '@/project': path.resolve(__dirname, '..', 'project.config.json'),
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
@@ -28,16 +36,14 @@ const config = {
   framework: 'react',
   mini: {
     postcss: {
-      pxtransform: {
-        enable: false,
-        config: {
-
-        }
+      autoprefixer: {
+        enable: true
       },
+      // 小程序端样式引用本地资源内联配置
       url: {
         enable: true,
         config: {
-          limit: 1024 // 设定转换尺寸上限
+          limit: 10240
         }
       },
       cssModules: {
@@ -47,7 +53,7 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
-    }
+    },
   },
   h5: {
     publicPath: '/',
