@@ -7,6 +7,7 @@ import {
   Status,
 } from "https://deno.land/x/oak@v9.0.0/mod.ts";
 import getFiltrateData from "./filtrateData.ts";
+import getVideoUrl from "./getVideoUrl.ts";
 
 // 获取环境变量
 const env = Deno.env.toObject();
@@ -92,8 +93,32 @@ export const getLike = async (
   response.body = filtrateData;
 };
 
+/** 获取视频链接 */
+export const getVideo = async (
+  ctx: RouterContext<RouteParams, Record<string, any>>,
+) => {
+  const {
+    params,
+    response,
+    request,
+  } = ctx;
+
+  const searchUrl = request.url.searchParams.get("url");
+  if (!searchUrl) {
+    response.status = 400;
+    response.body = { msg: `Cannot find url ${searchUrl}` };
+    return;
+  }
+
+  const filtrateData = await getVideoUrl(searchUrl);
+
+  response.status = 200;
+  response.body = filtrateData;
+};
+
 router
   .get("/post", getPost)
-  .get("/like", getLike);
+  .get("/like", getLike)
+  .get("/video", getVideo);
 
 await app.listen(`${HOST}:${PORT}`);
