@@ -3,7 +3,7 @@ import { FC } from 'react'
 import sr from 'sr-sdk-wxapp'
 // import '@taroify/core/index.css'
 
-import './app.sass'
+import './app.less'
 
 /**
    * 有数埋点SDK 默认配置

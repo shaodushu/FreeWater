@@ -6,7 +6,7 @@
 	"templateInfo": {
 		"name": "default-youshu",
 		"typescript": true,
-		"css": "sass"
+		"css": "less"
 	},
 	"scripts": {
 		"build:weapp": "taro build --type weapp",

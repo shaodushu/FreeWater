@@ -1,8 +1,8 @@
 import Taro from '@tarojs/taro';
 import { Video, View } from '@tarojs/components'
 import { useRequest } from 'ahooks'
-import styles from './index.module.sass'
-import { Search, Image, Grid, Field, Button } from "@taroify/core"
+import styles from './index.module.less'
+import { Search, Image, Grid, Button } from "@taroify/core"
 import { useEffect, useState } from 'react';
 
 function httpString(s) {
