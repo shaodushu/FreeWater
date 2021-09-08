@@ -2,13 +2,13 @@ import Taro from '@tarojs/taro';
 import { Video, View } from '@tarojs/components'
 import { useRequest } from 'ahooks'
 import styles from './index.module.less'
-import { Search, Image, Grid, Button } from "@taroify/core"
+import { Search, Image, Grid, Button, Row, Col, Loading } from "@taroify/core"
 import { useEffect, useState } from 'react';
 import { httpString } from '@/utils/index';
 
 function Index() {
   const [value, setValue] = useState('')
-  const { run, data = [], loading, error } = useRequest(`http://192.168.2.100:3000/video?url=${value}`, {
+  const { run, data = [], loading, error } = useRequest(`http://139.155.176.28/api/v1/video?url=${value}`, {
     manual: true,
     requestMethod: (param: any) => {
       console.log(param)
@@ -19,7 +19,17 @@ function Index() {
     formatResult: (v) => v.data
   })
 
-  console.log(data)
+  const { data: list = [], loading: loadingA } = useRequest(`http://139.155.176.28/api/v1/post?url=https://v.douyin.com/dMjh5pe/`, {
+    requestMethod: (param: any) => {
+      console.log(param)
+      return Taro.request({
+        url: param
+      })
+    },
+    formatResult: (v) => v.data
+  })
+
+  console.log(list)
   useEffect(() => {
     Taro.getClipboardData({
       success: function (res) {
@@ -108,11 +118,17 @@ function Index() {
       loop={false}
       muted={false}
     /> */}
-    {/* <Grid >
-      {data.map(item => <div key={item.title} className={styles['grid-item']}>
-        <Image width="100" height="100" src={item.cover} />
-      </div>)}
-    </Grid> */}
+    <h3>宝子的作品</h3>
+    {loadingA ? (
+      <Loading size="24px" vertical>加载中...</Loading>
+    ) : (
+      <Grid columns={2} gutter={10}>
+        {list.map(item => <Grid.Item key={item.title} >
+          <Image className={styles.image} src={item.cover} />
+        </Grid.Item>)}
+      </Grid>
+    )}
+
   </View>
 }
 
